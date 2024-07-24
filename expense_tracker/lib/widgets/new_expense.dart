@@ -40,27 +40,36 @@ class _NewExpenseState extends State<NewExpense> {
             autofocus: true,
             /* inputFormatters: [FilteringTextInputFormatter.digitsOnly], */
             decoration: const InputDecoration(
+              prefixText: '\$ ',
               label: Text('Amount'),
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                ),
+                child: const Text(
+                  'Cancel',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
               ElevatedButton(
                 onPressed: () {
                   print(_titleController.text);
                   print(double.parse(_amountController.text));
                 },
                 child: const Text('Save Expense'),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                ),
-                child: const Text('Cancel', style: TextStyle(color: Colors.white),),
               ),
             ],
           )
